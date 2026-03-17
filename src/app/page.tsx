@@ -1,16 +1,7 @@
-"use client"
-
-import { useEffect } from "react"
-import { useTaskStore } from "@/store/taskStore"
 import Board from "@/features/board/board"
 import CreateTask from "@/features/board/create_task"
 
 export default function Home() {
-  const { tasks, fetchTasks } = useTaskStore()
-
-  useEffect(() => {
-    fetchTasks()
-  }, [fetchTasks])
 
   return (
     <main className="min-h-screen bg-gray-50">
