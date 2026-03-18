@@ -1,9 +1,10 @@
 "use client";
 
 import { useTaskStore } from "@/store/taskStore";
-import React, { useEffect } from "react";
 import Column from "./column";
 import { DndContext } from "@dnd-kit/core";
+import TaskToolbar from "./task-toolbar";
+import { Task } from "@/types/task";
 
 const columns = [
     { id: "todo", title: "Todo" },
@@ -12,12 +13,12 @@ const columns = [
     { id: "done", title: "Done" },
 ];
 
-const Board = () => {
-    const { tasks, fetchTasks, updateTask } = useTaskStore();
+type BoardProps = {
+    filteredTasks: Task[]
+}
 
-    useEffect(() => {
-        fetchTasks();
-    }, [fetchTasks]);
+const Board = ({filteredTasks}: BoardProps) => {
+    const { updateTask } = useTaskStore();
 
     const handleDragEnd = async (event: any) => {
         const { active, over } = event;
@@ -28,7 +29,7 @@ const Board = () => {
 
         const newStatus = over.id;
 
-        const task = tasks.find((t) => t.id === taskId);
+        const task = filteredTasks.find((t) => t.id === taskId);
 
         if (!task) return;
 
@@ -44,7 +45,7 @@ const Board = () => {
                         key={column.id}
                         columnId={column.id}
                         title={column.title}
-                        tasks={tasks.filter((task) => task.status === column.id)}
+                        tasks={filteredTasks.filter((task) => task.status === column.id)}
                     />
                 ))}
             </div>

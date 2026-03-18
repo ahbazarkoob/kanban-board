@@ -26,21 +26,22 @@ const TaskCard = ({ task }: TaskCardProps) => {
       style={style}
       className="bg-white p-4 rounded shadow cursor-grab flex flex-col gap-2"
     >
-      <div className="flex justify-end">
+      <div className="flex justify-between">
+        <h3 className="font-medium ">{task.title}</h3>
         <div
           className={cn(
             "text-xs text-gray-400 capitalize border rounded-full px-2 py-1",
             task.priority === "low" ?
-              "bg-green-400 border-green-500 text-green-500" :
+              "bg-green-100 border-green-600 text-green-600" :
               task.priority === "medium" ?
-                "bg-orange-200 border-orange-500 text-orange-500" :
-                "bg-red-300 border-red-700 text-red-700"
+                "bg-yellow-100 border-yellow-600 text-yellow-600" :
+                "bg-red-100 border-red-600 text-red-600"
           )}
         >
           {task.priority}
         </div>
       </div>
-      <h3 className="font-medium ">{task.title}</h3>
+
 
       {task.description && (
         <p className="text-sm text-gray-500 mt-1">{task.description}</p>
