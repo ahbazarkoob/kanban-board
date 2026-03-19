@@ -12,11 +12,11 @@ import {
 } from "@/components/ui/select"
 
 type Props = {
-    onSearch: (value: string) => void;
-    onSort: (value: string) => void;
-};
+    onSearchAction: (value: string) => void;
+    onSortAction: (value: string) => void;
+  };
 
-export default function TaskToolbar({ onSearch, onSort }: Props) {
+export default function TaskToolbar({ onSearchAction, onSortAction }: Props) {
     const [search, setSearch] = useState("");
 
     return (
@@ -26,11 +26,11 @@ export default function TaskToolbar({ onSearch, onSort }: Props) {
                 value={search}
                 onChange={(e) => {
                     setSearch(e.target.value);
-                    onSearch(e.target.value);
+                    onSearchAction(e.target.value);
                 }}
                 className="w-64"
             />
-            <Select onValueChange={(e) => onSort(e)}>
+            <Select onValueChange={(e) => onSortAction(e)}>
                 <SelectTrigger>
                     <SelectValue placeholder="Sort by" />
                 </SelectTrigger>

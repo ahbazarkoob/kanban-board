@@ -28,6 +28,7 @@ const Board = ({filteredTasks}: BoardProps) => {
         const taskId = active.id;
 
         const newStatus = over.id;
+        if (!columns.includes(newStatus)) return;
 
         const task = filteredTasks.find((t) => t.id === taskId);
 
@@ -37,6 +38,7 @@ const Board = ({filteredTasks}: BoardProps) => {
 
         await updateTask(taskId, { status: newStatus });
     };
+
     return (
         <DndContext onDragEnd={handleDragEnd}>
             <div className="grid grid-cols-4 gap-6 p-6 h-full flex-1">

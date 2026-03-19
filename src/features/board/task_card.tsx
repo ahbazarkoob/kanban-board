@@ -24,7 +24,7 @@ const TaskCard = ({ task }: TaskCardProps) => {
       {...attributes}
       {...listeners}
       style={style}
-      className="bg-white p-4 rounded shadow cursor-grab flex flex-col gap-2"
+      className="bg-white p-4 border-gray-300 rounded-xl shadow cursor-grab flex flex-col gap-2"
     >
       <div className="flex justify-between">
         <h3 className="font-medium ">{task.title}</h3>

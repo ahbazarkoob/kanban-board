@@ -39,7 +39,7 @@ export default function Home() {
       <div className="flex flex-row justify-between items-center p-6">
         <div className="text-3xl font-semibold">Kanban Board Dashboard</div>
         <div className="flex flex-row items-center gap-3">
-          <TaskToolbar onSearch={setSearchQuery} onSort={setSortType} />
+          <TaskToolbar onSearchAction={setSearchQuery} onSortAction={setSortType} />
           <Button size={"icon-lg"} className="rounded-full" variant={"outline"} onClick={() => setIsCreateTaskDialogOpen(true)}>
             <Plus />
           </Button>
